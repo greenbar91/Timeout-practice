@@ -15,6 +15,14 @@ Example
 
 function intervalCount(cb, delay, amount) {
 
+let interval = setInterval(() => {
+cb();
+amount--
+if(amount === 0){
+  clearInterval(interval)
+}
+}, delay)
+
 }
 
 intervalCount(
@@ -22,7 +30,7 @@ intervalCount(
     console.log("hi");
   },
   500,
-  5
+  3
 ); // prints 'hi' at 500ms intervals a total of 3 times
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
