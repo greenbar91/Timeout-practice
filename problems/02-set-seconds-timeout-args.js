@@ -16,6 +16,16 @@ Examples:
 
 function setSecondsTimeoutArgs(cb, delayInSeconds, ...args) {
 
+//Use setTimeout method on the params and multiplying delay into milliseconds
+
+setTimeout(cb, delayInSeconds * 1000 , ...args)
+
+//Alternative syntax for multiple arguements
+// const printingTimeout = setTimeout(() => {
+//   cb
+//   (...args)
+// }, delayInSeconds * 1000)
+
 }
 function printSum(num1, num2, num3) {
     console.log(num1 + num2 + num3);
