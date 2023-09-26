@@ -14,15 +14,27 @@ node with the examples below to confirm the correct behavior.
 Note: The test specs for this problem are valid for iterative solutions. If you
 pass the specs for an iterative solution and then attempt a recursive solution,
 you will need to test your new solution manually using node.
-
-Example:
-
-
 ***********************************************************************/
 
-function batchTimeouts(callbacks, delays) {
+// function batchTimeouts(callbacks, delays) {
+//   let timeoutArr = []
+//   for (let i = 0; i < callbacks.length; i++) {
+//     const timeoutObj = setTimeout(callbacks[i], delays[i])
+//     timeoutArr.push(timeoutObj)
+//   }
+//   return timeoutArr
+// }
 
+function batchTimeouts(callbacks, delays, timeoutArr = [], i = 0, counter = callbacks.length) {
+  //base case
+  if (counter === 0) return timeoutArr
+  //recursive step to decrease counter
+  const timeoutObj = setTimeout(callbacks[i], delays[i])
+  //recursive base
+  timeoutArr.push(timeoutObj)
+  return batchTimeouts(callbacks, delays, timeoutArr, i + 1, counter - 1)
 }
+
 const sayHello = () => console.log('hi');
 const sayGoodbye = () => console.log('bye');
 const shout = () => console.log('WHAT?');
